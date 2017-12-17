@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Page</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="css/mui.min.css">
+		<!--App自定义的css-->
+		<!-- <link rel="stylesheet" type="text/css" href="../css/app.css" /> -->
+		<link rel="stylesheet" href="css/public.css">
+		
+	</head>
+	
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<!--<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>-->
+			<h1 class="mui-title">订单详情</h1>
+		</header>
+		
+		<div class="mui-content">
+			<div class="mui-content-padded" style="margin: 5px;">
+					
+
+
+					<div class="mui-content" style="background-color:#fff">
+				<h5 style="background-color:#efeff4">订单号：201801010003</h5>
+				<ul id="goods_1" class="mui-table-view mui-grid-view">
+					
+					<li class="mui-table-view-cell mui-media mui-col-xs-6">
+							<img class="mui-media-object" src="images/cbd.jpg">
+					</li>
+							
+					 <li class="mui-table-view-cell mui-media mui-col-xs-6">
+							<img class="mui-media-object" src="images/cbd.jpg">
+					</li>
+							
+					 <li class="mui-table-view-cell mui-media mui-col-xs-6">
+							<div class="mui-media-body">物流单号：XXXXXX </div>
+							<div class="mui-media-body">商品型号：XXXXXX </div>
+							<p class='mui-ellipsis' style="">状态：待确认</p>
+					</li>
+					
+				</ul>    
+			</div>
+					
+					
+					
+					
+					<div class="mui-button-row" style="height: auto;margin-top: 15px;">
+						<button type="button" id="to_order_list" class="mui-btn mui-btn-primary mui-btn-block">返        回</button>
+					</div>
+					
+					<!--登录按钮--
+					<div class="mui-button-row" style="height: auto;margin-top: 10px;">
+						<button type="button" id="login" class="mui-btn mui-btn-primary mui-btn-block">登        录</button>
+					</div>
+					-->
+			</div>
+		</div>
+		
+		
+		<!--引用jquery
+		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+		-->
+		<script src="js/jquery-3.2.1.min.js"></script>
+		
+		<!----
+		<script src="js/lib/purl.js" type="text/javascript"></script>
+		<script src="js/lib/mui.min.js"></script>
+		
+		<script src="js/base/config.js"></script>
+		
+		<script src="js/base/net.js" ></script>
+		-->
+		<script type="text/javascript" src="js/user/order.js" />
+
+
+		<script>
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+		</script>
+		
+	</body>
+</html>
