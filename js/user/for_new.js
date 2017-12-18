@@ -1,16 +1,30 @@
+(function ($, owner, mui) {
+
+    owner.upload = function () {
+        $("button[type=upload]").click(function () {
+            // mui.toast("upload", {duration: 'long', type: "div"});
+            $("input[type=file]").click();
+        });
+
+        $("input[type=file]").change(function (e) {
+            mui.toast("change", {duration: 'long', type: "div"});
+        });
+    }
+
+    owner.submit = function () {
+        $("button[type=submit]").click(function () {
+            // mui.toast("submit", {duration: 'long', type: "div"});
+            net.redirect("order_list");
+        });
+    }
+
+    owner.init = function () {
+        owner.upload();
+        owner.submit();
+
+    }
 
 
-$("#to_order_list").click(function(e) {
-
-window.location.href = "order_list.html";
-
-});
-
-
-$("#to_menu").click(function(e) {
-
-window.location.href = "menu.html";
-
-});
-
+    owner.init();
+})(jQuery, window.newGoods = {}, mui);
 

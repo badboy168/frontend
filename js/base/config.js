@@ -19,12 +19,5 @@ config.getTitle = function () {
 
 
 window.onload = function () {
-    var title = config.getTitle();
-    var muiTitle = $(".mui-title");
 
-    $(document).attr('title', title);
-
-    if (null != muiTitle) {
-        $(".mui-title").html(config.getTitle());
-    }
 }

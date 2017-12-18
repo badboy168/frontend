@@ -1,16 +1,10 @@
+(function ($, owner, mui) {
+    
+    owner.init = function () {
+        
+    }
 
 
-$("#goods_1").click(function(e) {
+    owner.init();
 
-window.location.href = "goods.html";
-
-});
-
-
-
-
-$("#to_order_list").click(function(e) {
-
-window.location.href = "order_list.html";
-
-});
+})(jQuery, window.order = {}, mui);

@@ -7,6 +7,7 @@
 	owner.codeImgClick = function() {
 		$("img").click(function(e) {
 			$(this).attr("src", owner.imgRequestUrl + "?mt" + Math.random());
+            $('input[name=imgCode]').val("");
 		});
 	}
 
@@ -32,6 +33,9 @@
 				});
 				return;
 			}
+
+            $("input[name=smsCode]").focus();
+
 			var data = {mobile: phone.val(),captcha: code.val()};
 			net.post("sms/send", data, function (data) {
                 mui.toast(net.getMessage(), {
@@ -62,7 +66,8 @@
                         type: 'div'
                     });
 
-                    window.location.href = net.path + "menu.html";
+					net.redirect("menu");
+                    //window.location.href = net.path + "menu.html";
                 });
 
 			});
@@ -71,13 +76,13 @@
 
 	owner.init = function() {
 
-
 		owner.codeImgClick();
 
 		owner.sendSmsCode();
 
 		owner.login();
 
+		$("input[name=phone]").focus();
 	}
 
 	owner.init();
