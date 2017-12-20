@@ -14,7 +14,7 @@
     owner.submit = function () {
         $("button[type=submit]").click(function () {
             // mui.toast("submit", {duration: 'long', type: "div"});
-            net.redirect("order_list");
+            net.redirect("order");
         });
     }
 

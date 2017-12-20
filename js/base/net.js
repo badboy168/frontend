@@ -20,8 +20,15 @@
 
 
     net.back = function () {
-        var num = undefined == arguments[0]?-1:arguments[0];
-        window.history.back(num);
+        var num = undefined == arguments[0]?0:arguments[0];
+        if(num == 0)
+        {
+            window.history.back();
+        }else
+        {
+            window.history.go(num);
+        }
+
     }
     
     /**
