@@ -97,6 +97,9 @@
 
         owner.login();
 
+        // net.post("app", {user:"mark"}, function (data) {
+        //     console.log(data);
+        // })
     }
 
     owner.init();
