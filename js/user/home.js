@@ -1,92 +1,105 @@
-(function($, owner, mui) {
+(function ($, owner, mui) {
 
-	owner = {
-		imgRequestUrl: net.requestUrl + "sms/getCode",
-	};
+    owner = {
+        token:"",
+        timer:null,
+        second:5
+    };
 
-	owner.codeImgClick = function() {
-		$("img").click(function(e) {
-			$(this).attr("src", owner.imgRequestUrl + "?mt" + Math.random());
-            $('input[name=imgCode]').val("");
-		});
-	}
+    /**
+     * 发送短信验证码
+     */
+    owner.sendSmsCode = function () {
+        $("#getSmsCode").click(function () {
 
-	owner.sendSmsCode = function() {
-		$("#getSmsCode").click(function() {
+            //手机号码
+            var phone = $("input[name=phone]");
+            //正则验证
+            if (!(/^1[34578]\d{9}$/.test(phone.val()))) {
+                mui.toast("手机号码格式不正确", {
+                    duration: 'long',
+                    type: 'div'
+                });
+                return;
+            }
 
-			//手机号码
-			var phone = $("input[name=phone]");
-			//验证码
-			var code = $('input[name=imgCode]');
+            // owner.countDow($(this));
 
-			if(!(/^1[34578]\d{9}$/.test(phone.val()))) {
-				mui.toast("手机号码有误，请重填", {
-					duration: 'long',
-					type: 'div'
-				});
-				return;
-			}
-			if(!code.val()) {
-				mui.toast("请输入图片验证码", {
-					duration: 'long',
-					type: 'div'
-				});
-				return;
-			}
+            //发送短信验证码
+            net.post("app/sms", {phone: phone.val()}, function (data) {
+                // sessionStorage.setItem("token", data.token);
+                owner.token = data.token;
 
-            $("input[name=smsCode]").focus();
-
-			var data = {mobile: phone.val(),captcha: code.val()};
-			net.post("sms/send", data, function (data) {
                 mui.toast(net.getMessage(), {
-							duration: 'long',
-							type: 'div'
-						});
+                    duration: 'long',
+                    type: 'div'
+                });
             });
-		});
 
-		owner.login = function() {
-			$("#login").click(function(e) {
+        });
 
-				var phone = $("input[name=phone]");
-				var smsCode = $("input[name=smsCode]");
+        owner.login = function () {
+            $("#login").click(function (e) {
 
-				if(!smsCode.val()) {
-					mui.toast("请输入验证码", {
-						duration: 'long',
-						type: 'div'
-					});
-					return;
-				}
-				var uri = "sms/login/" + phone.val() + "/" + smsCode.val();
-				net.get(uri, function (data) {
+                var phone = $("input[name=phone]");
+                var smsCode = $("input[name=smsCode]");
+
+                if (!smsCode.val()) {
+                    mui.toast("请输入验证码", {
+                        duration: 'long',
+                        type: 'div'
+                    });
+                    return;
+                }
+
+                // var uri = "app/login";
+                net.post("app/login", {phone:phone.val(), code:smsCode.val(), sms:owner.token}, function (data) {
+                    // console.log(data);
                     sessionStorage.setItem("token", data.token);
+                    sessionStorage.removeItem('sms');
                     mui.toast("登录成功", {
                         duration: 'long',
                         type: 'div'
                     });
 
-					net.redirect("menu");
+                    net.redirect("menu");
                     //window.location.href = net.path + "menu.html";
                 });
 
-			});
-		}
-	}
-
-	owner.init = function() {
-
-		owner.codeImgClick();
-
-		owner.sendSmsCode();
-
-		owner.login();
-
-		$("input[name=phone]").focus();
-	}
-
-	owner.init();
+            });
+        }
+    }
 
 
+    owner.countDow = function (obj) {
 
-})($, window.home = {},mui);
+        obj.attr('disabled', true);
+
+        owner.timer = setInterval(function () {
+            var data = obj.attr('data');
+            obj.html(data + "("+ owner.second +")" );
+            owner.second -- ;
+            if(owner.second <= 0)
+            {
+                obj.removeAttr('disabled');
+                obj.html(data);
+                // obj.html(data);
+                clearInterval(owner.timer);
+            }
+        }, 1000)
+    }
+
+
+    owner.init = function () {
+
+
+        owner.sendSmsCode();
+
+        owner.login();
+
+    }
+
+    owner.init();
+
+
+})($, window.home = {}, mui);

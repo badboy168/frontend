@@ -1,6 +1,8 @@
 
+//http://127.0.0.1/returns/webservice/public/index.php/api/
+//http://lottery.longyaonet.com/api/v1/
     net = {
-        requestUrl: "http://lottery.longyaonet.com/api/v1/",
+        requestUrl: "http://127.0.0.1/returns/webservice/public/index.php/api/",
         path: $.url.attr("path"),
         urlDirectory: $.url.attr("directory"),
         uri: null, //http host后面的参数
@@ -30,7 +32,7 @@
         }
 
     }
-    
+
     /**
      * URL跳转
      * @param uri
@@ -144,6 +146,17 @@
         //解析参数并给全局变量赋值
         if (net.parseArgs()) {
             net.http("post");
+        }
+
+    }
+
+    net.put = function () {
+
+        net.arguments = arguments;
+
+        //解析参数并给全局变量赋值
+        if (net.parseArgs()) {
+            net.http("put");
         }
 
     }
