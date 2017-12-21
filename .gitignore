@@ -5,6 +5,7 @@
 /storage/logs/*log
 /vendor
 /.idea
+/.idea/*
 /.vagrant
 /.project
 Homestead.json
