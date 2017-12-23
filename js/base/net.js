@@ -164,3 +164,34 @@
     }
 
 
+
+ net.parseStatus = function (status) {
+    switch (status) {
+        case 0:
+            return "已提交";
+            break;
+        case 1:
+            return "待支付";
+            break;
+        case 2:
+            return "已完成";
+            break;
+    }
+ }
+
+ net.category = function (category) {
+
+     switch (category) {
+         case "for_card":
+             return "兑换现金券";
+             break;
+         case "for_new":
+             return "旧品换新";
+             break;
+         case "for_mend":
+             return "商品维修";
+             break;
+     }
+ }
+
+

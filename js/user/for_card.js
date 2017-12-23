@@ -95,7 +95,7 @@
 
             net.post('app', params, function (data) {
 
-                net.redirect("order");
+                net.redirect("order_list");
                 // if(data.insertId)
                 // {
                 //     re
