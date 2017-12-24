@@ -42,7 +42,7 @@
         html += "<img class='mui-media-object mui-pull-left' src=" + data.img2 + ">";
         html += '<div class="mui-media-body">';
         html += "订单号：" + data.order_sn;
-        html += "<p class='mui-ellipsis'>状态：" + status + " " + net.category(data.category) +"</p>";
+        html += "<p class='mui-ellipsis'>状态：" + status + " 【 " + net.category(data.category) +"】</p>";
         html += "</div>";
         html += "</li>";
 
