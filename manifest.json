@@ -8,7 +8,7 @@
   "description": "",
   "launch_path": "index.html",
   "developer": {
-    "name": ""
+    "name": "pony"
   },
   "develop": {
     "url":"http://127.0.0.1/webservice/public/index.php/api/"
@@ -16,6 +16,5 @@
   "release": {
     "url":"http://master.webservice.longyaonet.com/api/"
   }
-
 
 }
