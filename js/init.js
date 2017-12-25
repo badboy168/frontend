@@ -7,7 +7,7 @@
             for_card: "兑换现金券",
             for_new: "旧品换新",
             for_mend: "商品维修",
-            order_list: "订单管理",
+            order_list: "我的订单",
             order: "订单详情"
         }
     };
@@ -74,6 +74,8 @@
             {
                 window.requestUrl = data.release.url;
             }
+
+            sessionStorage.setItem('requestUrl', window.requestUrl);
         });
 
     }
@@ -81,11 +83,13 @@
 
     owner.init = function () {
 
+        //初始化配置
+        owner.initConfig();
         //初始化MUI
         owner.mui();
         owner.initWithTitle();
         owner.checkLogin();
-        owner.initConfig();
+
 
         var message = $.url.param("message");
         if (null != message) {

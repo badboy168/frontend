@@ -29,7 +29,6 @@
             net.post("app/sms", {phone: phone.val()}, function (data) {
                 // sessionStorage.setItem("token", data.token);
                 owner.token = data.token;
-
                 mui.toast(net.getMessage(), {
                     duration: 'long',
                     type: 'div'
@@ -71,30 +70,11 @@
     }
 
 
-    owner.countDow = function (obj) {
-
-        obj.attr('disabled', true);
-
-        owner.timer = setInterval(function () {
-            var data = obj.attr('data');
-            obj.html(data + "(" + owner.second + ")");
-            owner.second--;
-            if (owner.second <= 0) {
-                obj.removeAttr('disabled');
-                obj.html(data);
-                // obj.html(data);
-                clearInterval(owner.timer);
-            }
-        }, 1000)
-    }
-
-
     owner.init = function () {
 
         owner.sendSmsCode();
 
         owner.login();
-
 
     }
 
