@@ -1,11 +1,5 @@
-
-//http://127.0.0.1/returns/webservice/public/index.php/api/
-//http://127.0.0.1/returns/webservice/public/index.php/api/
-//http://develop.webservice.longyaonet.com/api/
-
-    net = {
-        // requestUrl: "http://webservice.longyaonet.com/api/",
-        requestUrl:'http://127.0.0.1/webservice/public/index.php/api/',
+ net = {
+        requestUrl:window.requestUrl,
         path: $.url.attr("path"),
         urlDirectory: $.url.attr("directory"),
         uri: null, //http host后面的参数
@@ -195,5 +189,7 @@
              break;
      }
  }
+
+
 
 

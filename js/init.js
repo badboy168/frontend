@@ -62,17 +62,36 @@
     }
 
 
+    owner.initConfig = function () {
+
+        var hostname = window.location.hostname;
+
+        $.getJSON("manifest.json", function (data) {
+            if(hostname == '127.0.0.1' || hostname == 'localhost')
+            {
+                window.requestUrl = data.develop.url;
+            }else
+            {
+                window.requestUrl = data.release.url;
+            }
+        });
+
+    }
+
+
     owner.init = function () {
 
         //初始化MUI
         owner.mui();
         owner.initWithTitle();
         owner.checkLogin();
+        owner.initConfig();
 
         var message = $.url.param("message");
         if (null != message) {
             mui.toast(message, {duration: 'long', type: "div"});
         }
+
     }
 
     owner.init();

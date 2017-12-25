@@ -1,9 +1,9 @@
 (function ($, owner, mui) {
 
     owner = {
-        token:"",
-        timer:null,
-        second:5
+        token: "",
+        timer: null,
+        second: 5
     };
 
     /**
@@ -53,7 +53,7 @@
                 }
 
                 // var uri = "app/login";
-                net.post("app/login", {phone:phone.val(), code:smsCode.val(), sms:owner.token}, function (data) {
+                net.post("app/login", {phone: phone.val(), code: smsCode.val(), sms: owner.token}, function (data) {
                     // console.log(data);
                     sessionStorage.setItem("token", data.token);
                     sessionStorage.removeItem('sms');
@@ -77,10 +77,9 @@
 
         owner.timer = setInterval(function () {
             var data = obj.attr('data');
-            obj.html(data + "("+ owner.second +")" );
-            owner.second -- ;
-            if(owner.second <= 0)
-            {
+            obj.html(data + "(" + owner.second + ")");
+            owner.second--;
+            if (owner.second <= 0) {
                 obj.removeAttr('disabled');
                 obj.html(data);
                 // obj.html(data);
@@ -96,9 +95,11 @@
 
         owner.login();
 
+
     }
 
     owner.init();
 
 
 })($, window.home = {}, mui);
+
