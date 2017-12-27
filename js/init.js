@@ -58,6 +58,8 @@
             if (file != "index.html" && null != file) {
                 net.redirect('index', {message: "请登录"});
             }
+        }else if(null != net.token && file == 'index'){
+            net.redirect('menu');
         }
     }
 

@@ -54,7 +54,8 @@
                 // var uri = "app/login";
                 net.post("app/login", {phone: phone.val(), code: smsCode.val(), sms: owner.token}, function (data) {
                     // console.log(data);
-                    sessionStorage.setItem("token", data.token);
+                    //sessionStorage.setItem("token", data.token);
+                    localStorage.setItem("token", data.token);
                     sessionStorage.removeItem('sms');
                     mui.toast("登录成功", {
                         duration: 'long',

@@ -8,7 +8,7 @@ net = {
     successCode: 200,
     notLogin: 403,
     arguments: null,
-    token: sessionStorage.getItem("token"),
+    token: localStorage.getItem("token"),
     message: "",
 };
 
