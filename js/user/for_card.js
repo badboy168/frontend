@@ -69,7 +69,6 @@
             var remark = $('textarea');
 
 
-
             if (imgOne.attr('data') == "0" || imgTwo.attr('data') == "0") {
                 mui.toast("请上传两张图片");
                 return;
@@ -78,6 +77,11 @@
             if (!expressNo.val()) {
                 mui.toast("请输入物流单号");
                 return;
+            }
+
+            if (remark.val() == "")
+            {
+                remark.val("(无)");
             }
 
             var params = {

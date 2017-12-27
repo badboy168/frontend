@@ -21,7 +21,7 @@
 
     owner.getTitle = function () {
 
-        var file = null == $.url.attr("file") ? "index.html" : $.url.attr("file");
+        var file = null == $.url.attr("file") ? "menu.html" : $.url.attr("file");
 
         var position = file.lastIndexOf('.');
         var filePath = file.substr(0, position);

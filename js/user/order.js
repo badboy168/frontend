@@ -9,7 +9,7 @@
         var params = {
             table: 'order_info', where: {order_sn: orderSn},
             select: ['order_sn','phone', 'category', 'express_no','remark', 'img1', 'img2',
-                'created_at', 'status','updated_at',
+                'created_at', 'status','updated_at','message',
             ],
         };
 
@@ -38,9 +38,31 @@
         $("#created_at").html($("#created_at").attr('data') + data.created_at);
         $("#status").html($("#status").attr('data') + net.parseStatus(data.status));
         $("#updated_at").html($("#updated_at").attr('data') + data.updated_at);
+        if (data.message)
+        {
+            if(owner.checkUrl(data.message))
+            {
+                $("#result_message").html( $("#result_message").attr('data') + '<a href='+data.message+'>' + '【请点击】 '+ '</a>');
+            }else
+            {
+                $("#result_message").html( $("#result_message").attr('data') + data.message);
+            }
+        }
 
 
     };
+
+
+    owner.checkUrl = function (str) {
+
+            var RegUrl = new RegExp();
+            RegUrl.compile("^[A-Za-z]+://[A-Za-z0-9-_]+\\.[A-Za-z0-9-_%&\?\/.=]+$");//jihua.cnblogs.com
+            if (!RegUrl.test(str)) {
+                return false;
+            }
+            return true;
+
+    }
 
 
     owner.init = function () {
